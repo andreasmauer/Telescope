@@ -37,10 +37,3 @@ Meteor.publish('userComments', function(userId, limit) {
     Posts.find({_id: {$in: commentedPostIds}})
   ]
 });
-
-Meteor.publish('flat', function(){
-
-  return 'the first flat';
-
-
-});
