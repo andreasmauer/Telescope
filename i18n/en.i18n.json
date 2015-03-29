@@ -139,7 +139,7 @@
   "url": "URL",
   "short_url": "Short URL",
   "body": "Body",
-  "category": "Category",
+  "category": "List",
   "inactive_": "Inactive?",
   "sticky_": "Sticky?",
   "submission_date": "Submission Date",
@@ -237,7 +237,7 @@
   "sorry_you_cannot_edit_this_comment": "Sorry, you cannot edit this comment.",
 
   //Collections
-  "you_need_to_login_and_be_an_admin_to_add_a_new_category": "You need to login and be an admin to add a new category.",
+  "you_need_to_login_and_be_an_admin_to_add_a_new_category": "You need to login and be an admin to add a new list.",
   "you_need_to_login_or_be_invited_to_post_new_comments": "You need to login or be invited to post new comments.",
   "please_wait": "Please wait ",
   "seconds_before_commenting_again": " seconds before commenting again",

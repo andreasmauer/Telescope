@@ -1,7 +1,7 @@
 Meteor.startup(function () {
   Template[getTemplate('categories')].helpers({
     categories: function(){
-      return Categories.find({}, {sort: {order: 1, name: 1}});
+      return Categories.find({slug: Meteor.userId()}, {sort: {order: 1, name: 1}});
     },
     categoryItem: function () {
       return getTemplate('categoryItem');
@@ -15,7 +15,7 @@ Meteor.startup(function () {
       var name = $('#name').val();
       var numberOfCategories = Categories.find().count();
       var order = parseInt($('#order').val()) || (numberOfCategories + 1);
-      var slug = slugify(name);
+      var slug = Meteor.userId();
       
       Meteor.call('submitCategory', {
         name: name,

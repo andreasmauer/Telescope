@@ -23,7 +23,7 @@ Meteor.startup(function () {
 
   // Categories
 
-  Router.route('/category/:slug/:limit?', {
+  Router.route('/list/:slug/:limit?', {
     name: 'posts_category',
     controller: PostsCategoryController,
     onAfterAction: function() {
@@ -34,7 +34,7 @@ Meteor.startup(function () {
 
   // Categories Admin
 
-  Router.route('/categories', {
+  Router.route('/lists', {
     name: 'categories'
   });
 

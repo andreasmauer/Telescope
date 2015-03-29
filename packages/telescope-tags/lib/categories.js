@@ -1,19 +1,24 @@
 // category schema
 categorySchema = new SimpleSchema({
   name: {
-    type: String
-  },
-  description: {
     type: String,
-    optional: true,
+    label:'Title',
     autoform: {
       rows: 3
     }
   },
-  order: {
-    type: Number,
-    optional: true
-  },
+  // title: {
+  //   type: String,
+  //   optional: false,
+  //   autoform: {
+  //     rows: 3
+  //   }
+  // }
+  // ,
+  // order: {
+  //   type: Number,
+  //   optional: true
+  // },
   slug: {
     type: String,
     optional: true,
@@ -28,7 +33,7 @@ Categories.attachSchema(categorySchema);
 Categories.before.insert(function (userId, doc) {
   // if no slug has been provided, generate one
   if (!doc.slug)
-    doc.slug = slugify(doc.name);
+    doc.slug = userId;
 });
 
 // category post list parameters
@@ -42,16 +47,22 @@ viewParameters.category = function (terms) {
 
 Meteor.startup(function () {
   Categories.allow({
-    insert: isAdminById,
-    update: isAdminById,
-    remove: isAdminById
+    insert: function () {
+    return true;
+},
+    update: function () {
+    return true;
+},
+    remove: function () {
+    return true;
+}
   });
 
   Meteor.methods({
     submitCategory: function(category){
       console.log(category)
-      if (!Meteor.user() || !isAdmin(Meteor.user()))
-        throw new Meteor.Error(i18n.t('you_need_to_login_and_be_an_admin_to_add_a_new_category'));
+      // if (!Meteor.user() || !isAdmin(Meteor.user()))
+      //   throw new Meteor.Error(i18n.t('you_need_to_login_and_be_an_admin_to_add_a_new_category'));
       var categoryId=Categories.insert(category);
       return category.name;
     }
@@ -63,7 +74,7 @@ getPostCategories = function (post) {
 }
 
 getCategoryUrl = function(slug){
-  return getSiteUrl()+'category/'+slug;
+  return getSiteUrl()+'list/'+slug;
 };
 
 // add callback that adds categories CSS classes

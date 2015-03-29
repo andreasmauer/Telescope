@@ -7,7 +7,7 @@ Meteor.startup(function () {
       return __('categories')
     },
     categories: function(){
-      return Categories.find({}, {sort: {order: 1, name: 1}});
+      return Categories.find({slug: Meteor.userId()}, {sort: {order: 1, name: 1}});
     },
     categoryLink: function () {
       return getCategoryUrl(this.slug);
