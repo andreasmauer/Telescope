@@ -41,6 +41,10 @@ postSchemaObject = {
       editable: true
     }
   },
+  expose: {
+    type: String,
+    optional: true,
+  },
   body: {
     type: String,
     optional: true,
